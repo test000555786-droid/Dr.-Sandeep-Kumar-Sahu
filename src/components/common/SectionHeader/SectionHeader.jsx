@@ -12,7 +12,7 @@ const SectionHeader = ({
   return (
     <motion.div
       variants={fadeInUp}
-      initial="hidden"
+      initial={false}
       whileInView="visible"
       viewport={{ once: true, margin: '-50px' }}
       className={`mb-12 md:mb-16 ${centered ? 'text-center' : ''} ${className}`}

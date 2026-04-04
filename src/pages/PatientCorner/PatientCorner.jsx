@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChevronDown, FileText, Download, Phone, BookOpen, AlertCircle } from 'lucide-react';
 import { pageTransition, staggerContainer, fadeInUp } from '../../animations/variants';
 import SEO from '../../components/common/SEO/SEO';
@@ -88,6 +88,7 @@ const FAQItem = ({ faq, isOpen, onToggle }) => (
 
 const PatientCorner = () => {
   const [openFAQ, setOpenFAQ] = useState(null);
+  const navigate = useNavigate();
 
   const toggleFAQ = (i) => setOpenFAQ(openFAQ === i ? null : i);
 
@@ -110,7 +111,7 @@ const PatientCorner = () => {
         <div className="container-custom">
           <motion.div
             variants={staggerContainer}
-            initial="hidden"
+            initial={false}
             whileInView="visible"
             viewport={{ once: true }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
@@ -161,6 +162,12 @@ const PatientCorner = () => {
                 <p className="text-slate-500 font-sans text-sm mb-4">{desc}</p>
                 <a
                   href={action}
+                  onClick={(event) => {
+                    if (action.startsWith('/')) {
+                      event.preventDefault();
+                      navigate(action);
+                    }
+                  }}
                   className="text-teal-700 font-heading font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all"
                 >
                   {actionLabel} →

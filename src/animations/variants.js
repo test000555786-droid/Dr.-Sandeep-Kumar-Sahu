@@ -67,7 +67,7 @@ export const staggerContainerFast = {
 };
 
 export const pageTransition = {
-  initial: { opacity: 0, y: 12 },
+  initial: false,
   animate: {
     opacity: 1,
     y: 0,

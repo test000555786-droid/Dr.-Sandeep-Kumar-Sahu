@@ -38,7 +38,7 @@ const BlogDetails = () => {
             {/* Article */}
             <motion.div
               variants={fadeInUp}
-              initial="hidden"
+              initial={false}
               animate="visible"
               className="lg:col-span-2"
             >
@@ -100,7 +100,7 @@ const BlogDetails = () => {
             {/* Sidebar */}
             <motion.aside
               variants={fadeInUp}
-              initial="hidden"
+              initial={false}
               animate="visible"
               transition={{ delay: 0.2 }}
               className="space-y-6"

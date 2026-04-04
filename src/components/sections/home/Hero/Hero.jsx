@@ -43,7 +43,7 @@ const Hero = () => {
           <div className="order-2 lg:order-1">
             {/* Credential badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
@@ -56,7 +56,7 @@ const Hero = () => {
 
             {/* Main heading */}
             <motion.h1
-              initial={{ opacity: 0, y: 25 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
@@ -68,7 +68,7 @@ const Hero = () => {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.32 }}
               className="text-teal-100/90 text-lg md:text-xl font-sans leading-relaxed max-w-xl mb-8"
@@ -80,21 +80,21 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.44 }}
               className="flex flex-col sm:flex-row gap-4 mb-10"
             >
               <a
                 href={`tel:${doctorData.phone}`}
-                className="flex items-center justify-center gap-2.5 bg-white text-teal-800 px-7 py-4 rounded-full font-heading font-bold text-base hover:bg-teal-50 transition-all duration-300 shadow-xl hover:-translate-y-0.5 hover:shadow-2xl"
+                className="flex items-center justify-center gap-2.5 bg-white text-teal-800 px-7 py-4 rounded-full font-heading font-bold text-base hover:bg-teal-50 transition-[background-color,color,border-color,box-shadow,transform] duration-300 shadow-xl hover:-translate-y-0.5 hover:shadow-2xl"
               >
                 <Phone size={18} />
                 Call: {doctorData.phoneDisplay}
               </a>
               <Link
                 to="/contact"
-                className="flex items-center justify-center gap-2.5 border-2 border-white/70 text-white px-7 py-4 rounded-full font-heading font-semibold text-base hover:bg-white/10 hover:border-white transition-all duration-300"
+                className="flex items-center justify-center gap-2.5 border-2 border-white/70 text-white px-7 py-4 rounded-full font-heading font-semibold text-base hover:bg-white/10 hover:border-white transition-[background-color,color,border-color,box-shadow,transform] duration-300"
               >
                 <Calendar size={18} />
                 Book Appointment
@@ -103,7 +103,7 @@ const Hero = () => {
 
             {/* Stats */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.56 }}
               className="grid grid-cols-2 sm:grid-cols-4 gap-4"
@@ -123,7 +123,7 @@ const Hero = () => {
 
           {/* RIGHT — Doctor Visual Card */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
@@ -172,7 +172,7 @@ const Hero = () => {
                       <div className="h-1.5 bg-white/15 rounded-full overflow-hidden">
                         <motion.div
                           className="h-full bg-teal-300 rounded-full"
-                          initial={{ width: 0 }}
+                          initial={false}
                           animate={{ width: `${pct}%` }}
                           transition={{ duration: 1, delay: 0.8, ease: 'easeOut' }}
                         />
@@ -197,7 +197,7 @@ const Hero = () => {
               {floatingBadges.map(({ icon: Icon, text, color, delay }) => (
                 <motion.div
                   key={text}
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={false}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay, duration: 0.4 }}
                   className={`absolute flex items-center gap-2 ${color} rounded-full px-3 py-1.5 shadow-lg font-heading text-xs font-semibold border border-white/40`}
@@ -218,7 +218,7 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/50 cursor-pointer"

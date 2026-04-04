@@ -9,7 +9,7 @@ const PageHero = ({ title, subtitle, breadcrumb = [] }) => {
         {/* Breadcrumb */}
         {breadcrumb.length > 0 && (
           <motion.nav
-            initial={{ opacity: 0, y: 10 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             className="flex items-center gap-2 mb-6 text-teal-200/70 text-sm font-heading"
@@ -34,7 +34,7 @@ const PageHero = ({ title, subtitle, breadcrumb = [] }) => {
         )}
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl"

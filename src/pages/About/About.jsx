@@ -30,7 +30,7 @@ const About = () => {
             {/* Left — Profile card */}
             <motion.div
               variants={fadeInLeft}
-              initial="hidden"
+              initial={false}
               whileInView="visible"
               viewport={{ once: true }}
               className="lg:col-span-2"
@@ -94,7 +94,7 @@ const About = () => {
             {/* Right — Bio Content */}
             <motion.div
               variants={fadeInRight}
-              initial="hidden"
+              initial={false}
               whileInView="visible"
               viewport={{ once: true }}
               className="lg:col-span-3"

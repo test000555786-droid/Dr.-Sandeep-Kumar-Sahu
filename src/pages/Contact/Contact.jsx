@@ -39,7 +39,7 @@ const Contact = () => {
         <div className="container-custom py-6">
           <motion.div
             variants={staggerContainer}
-            initial="hidden"
+            initial={false}
             whileInView="visible"
             viewport={{ once: true }}
             className="grid grid-cols-1 sm:grid-cols-3 gap-4"
@@ -104,7 +104,7 @@ const Contact = () => {
             {/* Contact Form */}
             <motion.div
               variants={fadeInLeft}
-              initial="hidden"
+              initial={false}
               whileInView="visible"
               viewport={{ once: true }}
               className="lg:col-span-3"
@@ -261,7 +261,7 @@ const Contact = () => {
             {/* Sidebar */}
             <motion.div
               variants={fadeInRight}
-              initial="hidden"
+              initial={false}
               whileInView="visible"
               viewport={{ once: true }}
               className="lg:col-span-2 space-y-6"
