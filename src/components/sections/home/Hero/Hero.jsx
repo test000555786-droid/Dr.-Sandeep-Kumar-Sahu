@@ -20,7 +20,7 @@ const Hero = () => {
   return (
     <section
       className="relative w-full overflow-hidden"
-      style={{ minHeight: 'calc(100vh - 0px)', paddingTop: '80px' }}
+      style={{ minHeight: '100svh', paddingTop: 'var(--navbar-height)' }}
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-teal-950 via-teal-800 to-teal-600">
@@ -36,8 +36,11 @@ const Hero = () => {
         <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-teal-300/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative container-custom h-full flex items-center">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center py-16 lg:py-20">
+      <div
+        className="relative container-custom flex items-center"
+        style={{ minHeight: 'calc(100svh - var(--navbar-height))' }}
+      >
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center py-6 md:py-8 lg:py-10">
 
           {/* LEFT — Text Content */}
           <div className="order-2 lg:order-1">
