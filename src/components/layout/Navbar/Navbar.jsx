@@ -18,6 +18,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { pathname } = useLocation();
   const scrollFrameRef = useRef(null);
+  const previousPathnameRef = useRef(pathname);
 
   useEffect(() => {
     const updateScrolled = () => {
@@ -48,10 +49,11 @@ const Navbar = () => {
   }, [pathname]);
 
   useEffect(() => {
-    if (mobileOpen) {
-      setMobileOpen(false);
+    if (previousPathnameRef.current !== pathname) {
+      setMobileOpen((open) => (open ? false : open));
+      previousPathnameRef.current = pathname;
     }
-  }, [pathname, mobileOpen]);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
@@ -59,8 +61,8 @@ const Navbar = () => {
   }, [mobileOpen]);
 
   const navBg = scrolled
-    ? 'bg-white shadow-md'
-    : 'bg-transparent';
+    ? 'bg-white shadow-md backdrop-blur-md'
+    : 'bg-transparent shadow-none backdrop-blur-0';
 
   const logoColor = scrolled ? 'text-teal-800' : 'text-white';
   const subTextColor = scrolled ? 'text-teal-600' : 'text-white/75';
@@ -71,26 +73,26 @@ const Navbar = () => {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 box-border transition-colors duration-300 ${navBg}`}
+        className={`fixed top-0 left-0 right-0 z-50 box-border transition-[background-color,box-shadow,backdrop-filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${navBg}`}
         style={{ height: '80px' }}
       >
         <div className="container-custom h-full flex items-center justify-between px-4 sm:px-6 lg:px-8">
           
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex min-w-0 items-center gap-3">
             <div
-              className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 flex-shrink-0 ${
+              className={`w-10 h-10 rounded-xl flex items-center justify-center transition-[background-color,backdrop-filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex-shrink-0 ${
                 scrolled ? 'bg-teal-700' : 'bg-white/20 backdrop-blur-sm'
               }`}
             >
               <Stethoscope size={20} className="text-white" />
             </div>
 
-            <div>
-              <div className={`font-display font-bold text-lg leading-tight transition-colors duration-300 ${logoColor}`}>
+            <div className="min-w-0">
+              <div className={`truncate font-display font-bold text-lg leading-tight transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${logoColor}`}>
                 Dr. Sandeep Kumar Sahu
               </div>
-              <div className={`text-xs font-heading font-medium tracking-wide transition-colors duration-300 ${subTextColor}`}>
+              <div className={`truncate text-xs font-heading font-medium tracking-wide transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${subTextColor}`}>
                 DM Endocrinology · Cuttack
               </div>
             </div>
@@ -146,7 +148,9 @@ const Navbar = () => {
 
           {/* Mobile Hamburger */}
           <button
-            className={`lg:hidden w-10 h-10 flex items-center justify-center rounded-lg transition-colors flex-shrink-0 ${
+            type="button"
+            aria-label="Toggle menu"
+            className={`relative z-10 lg:hidden w-10 h-10 flex items-center justify-center rounded-lg transition-colors flex-shrink-0 ${
               scrolled ? 'text-slate-700 hover:bg-teal-50' : 'text-white hover:bg-white/20'
             }`}
             onClick={() => setMobileOpen((open) => !open)}
@@ -157,13 +161,13 @@ const Navbar = () => {
       </motion.header>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-40 bg-white"
             style={{ top: '80px' }}
           >
