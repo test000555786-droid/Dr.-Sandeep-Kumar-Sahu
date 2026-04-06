@@ -16,6 +16,12 @@ const floatingBadges = [
   { icon: Activity, text: 'Diabetes Specialist', color: 'bg-emerald-50 text-emerald-700', delay: 1.2 },
 ];
 
+const specialties = [
+  { label: 'Diabetes Management', pct: 97 },
+  { label: 'Thyroid Disorders', pct: 95 },
+  { label: 'Hormonal & Metabolic', pct: 93 },
+];
+
 const Hero = () => {
   return (
     <section
@@ -23,7 +29,13 @@ const Hero = () => {
       style={{ minHeight: '100svh', paddingTop: 'var(--navbar-height)' }}
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-950 via-teal-800 to-teal-600">
+      <div className="absolute inset-0 z-0 overflow-hidden bg-teal-950">
+        <img
+          src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Medical Background"
+          className="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-950/80 via-teal-800/80 to-teal-600/70"></div>
         {/* Mesh pattern */}
         <div
           className="absolute inset-0 opacity-10"
@@ -49,7 +61,7 @@ const Hero = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8"
             >
               <span className="w-2 h-2 bg-teal-300 rounded-full animate-pulse" />
               <span className="text-teal-100 text-sm font-heading font-medium">
@@ -124,7 +136,7 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* RIGHT — Doctor Visual Card */}
+          {/* RIGHT — Full-Image Doctor Card */}
           <motion.div
             initial={false}
             animate={{ opacity: 1, x: 0 }}
@@ -132,88 +144,138 @@ const Hero = () => {
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
             <div className="relative">
-              {/* Doctor card */}
-              <div className="relative w-72 md:w-80 lg:w-96">
-                {/* Background card */}
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl transform rotate-2" />
 
-                {/* Main card */}
-                <div className="relative bg-white/12 backdrop-blur-md rounded-3xl border border-white/25 p-8 shadow-2xl">
-                  {/* Doctor avatar */}
-                  <div className="relative mb-6">
-                    <div className="w-28 h-28 mx-auto rounded-full bg-teal-gradient flex items-center justify-center border-4 border-white/30 shadow-xl">
-                      <span className="text-white font-display font-bold text-4xl">S</span>
-                    </div>
-                    <div className="absolute -bottom-1 right-1/2 translate-x-12 w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center border-2 border-white shadow-md">
-                      <Stethoscope size={14} className="text-white" />
-                    </div>
-                  </div>
-
-                  <div className="text-center mb-6">
-                    <h2 className="font-display font-bold text-white text-xl mb-1">
-                      Dr. Sandeep Kumar Sahu
-                    </h2>
-                    <p className="text-teal-200 text-sm font-heading font-medium mb-1">
-                      DM (Endocrinology)
-                    </p>
-                    <p className="text-teal-300/80 text-xs font-sans">
-                      SCB Medical College, Cuttack
-                    </p>
-                  </div>
-
-                  {/* Skills bars */}
-                  {[
-                    { label: 'Diabetes', pct: 97 },
-                    { label: 'Thyroid', pct: 95 },
-                    { label: 'Hormonal', pct: 93 },
-                  ].map(({ label, pct }) => (
-                    <div key={label} className="mb-3">
-                      <div className="flex justify-between text-xs font-heading text-teal-100 mb-1">
-                        <span>{label}</span>
-                        <span>{pct}%</span>
-                      </div>
-                      <div className="h-1.5 bg-white/15 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full bg-teal-300 rounded-full"
-                          initial={false}
-                          animate={{ width: `${pct}%` }}
-                          transition={{ duration: 1, delay: 0.8, ease: 'easeOut' }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-
-                  {/* Clinic */}
-                  <div className="mt-5 pt-5 border-t border-white/15 flex items-center gap-3">
-                    <div className="w-8 h-8 bg-teal-400/20 rounded-lg flex items-center justify-center">
-                      <Activity size={14} className="text-teal-300" />
-                    </div>
-                    <div>
-                      <div className="text-white text-xs font-heading font-semibold">Sai Shree Health Care</div>
-                      <div className="text-teal-200/70 text-xs font-sans">Mangalabag, Cuttack</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating badges */}
+              {/* Floating specialty badges */}
               {floatingBadges.map(({ icon: Icon, text, color, delay }) => (
                 <motion.div
                   key={text}
                   initial={false}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay, duration: 0.4 }}
-                  className={`absolute flex items-center gap-2 ${color} rounded-full px-3 py-1.5 shadow-lg font-heading text-xs font-semibold border border-white/40`}
+                  className={`absolute z-20 flex items-center gap-2 ${color} rounded-full px-3 py-1.5 shadow-xl font-heading text-xs font-semibold border border-white/40 backdrop-blur-sm`}
                   style={{
-                    ...(text === 'Endocrinologist' ? { top: '-16px', left: '-24px' } : {}),
-                    ...(text === 'Thyroid Expert' ? { bottom: '30%', left: '-40px' } : {}),
-                    ...(text === 'Diabetes Specialist' ? { top: '20%', right: '-20px' } : {}),
+                    ...(text === 'Endocrinologist' ? { top: '-16px', left: '-28px' } : {}),
+                    ...(text === 'Thyroid Expert' ? { bottom: '30%', left: '-44px' } : {}),
+                    ...(text === 'Diabetes Specialist' ? { top: '20%', right: '-28px' } : {}),
                   }}
                 >
                   <Icon size={12} />
                   {text}
                 </motion.div>
               ))}
+
+              {/* ══════════════════════════════════════
+                  Full-Image Card — Full Bleed with Hover Reveal
+              ══════════════════════════════════════ */}
+              <div
+                className="group relative w-80 md:w-[22rem] lg:w-[26rem] rounded-3xl cursor-pointer select-none"
+                style={{ height: '560px' }}
+              >
+                {/* Ambient glow ring */}
+                <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-br from-teal-300 via-teal-500 to-emerald-500 opacity-40 blur-lg transition-all duration-500 group-hover:opacity-75 group-hover:blur-xl" />
+
+                {/* Card shell — overflow-hidden clips photo + reveal */}
+                <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/25 shadow-[0_8px_40px_rgba(20,184,166,0.3)] transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:shadow-[0_20px_64px_rgba(20,184,166,0.5)]">
+
+                  {/* ── Full-bleed doctor photo ── */}
+                  <img
+                    src="/DR-SKS.jpeg"
+                    alt="Dr. Sandeep Kumar Sahu — DM Endocrinologist Cuttack"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                    style={{ objectPosition: 'center 8%' }}
+                  />
+
+                  {/* Always-on bottom gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950 via-teal-900/65 to-transparent transition-opacity duration-500" />
+
+                  {/* Hover: deepen the overlay slightly */}
+                  <div className="absolute inset-0 bg-teal-950/0 transition-colors duration-500 group-hover:bg-teal-950/25" />
+
+                  {/* ── Top credential + verified row ── */}
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+                    <div className="bg-black/35 backdrop-blur-sm border border-white/15 text-white/80 text-[10px] font-heading font-semibold px-2.5 py-1 rounded-full tracking-wide">
+                      MBBS · MD · DM
+                    </div>
+                    <div className="flex items-center gap-1.5 bg-teal-400 text-white text-[11px] font-heading font-bold px-3 py-1 rounded-full shadow-lg">
+                      <Stethoscope size={11} />
+                      Verified
+                    </div>
+                  </div>
+
+                  {/* ──────────────────────────────────────
+                      Sliding info panel:
+                      Default   → translateY(0)   — shows name + tags
+                      Hovered   → translateY(-140px) — reveals skill bars & clinic
+                      We achieve this by placing ALL content in one panel and
+                      using a negative translate on hover to push hidden content
+                      into view from below.
+                  ────────────────────────────────────── */}
+                  <div
+                    className="absolute left-0 right-0 z-10 px-5 pt-4 pb-5 transition-transform duration-500 ease-out group-hover:-translate-y-36"
+                    style={{ top: '100%', marginTop: '-160px' }}
+                  >
+                    {/* ─ Hidden section (starts below visible area) ─ */}
+                    {/* Skill bars */}
+                    <div className="space-y-2.5 mb-4">
+                      {specialties.map(({ label, pct }) => (
+                        <div key={label}>
+                          <div className="flex justify-between text-[11px] font-heading text-teal-100 mb-1">
+                            <span>{label}</span>
+                            <span className="text-teal-300 font-semibold">{pct}%</span>
+                          </div>
+                          <div className="h-1.5 bg-white/15 rounded-full overflow-hidden">
+                            <motion.div
+                              className="h-full rounded-full"
+                              style={{ background: 'linear-gradient(90deg,#5eead4,#14b8a6)' }}
+                              initial={false}
+                              animate={{ width: `${pct}%` }}
+                              transition={{ duration: 1.1, delay: 0.1, ease: 'easeOut' }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Clinic row */}
+                    <div className="flex items-center gap-2.5 pb-4 border-b border-white/15 mb-4">
+                      <div className="w-7 h-7 bg-teal-400/20 rounded-lg flex items-center justify-center flex-shrink-0 border border-teal-300/20">
+                        <Activity size={13} className="text-teal-300" />
+                      </div>
+                      <div>
+                        <div className="text-white text-[11px] font-heading font-semibold">Sai Shree Health Care</div>
+                        <div className="text-teal-200/60 text-[10px] font-sans">Mangalabag, Cuttack · Mon–Sat</div>
+                      </div>
+                    </div>
+
+                    {/* ─ Always-visible section ─ */}
+                    <h2 className="text-white font-display font-bold text-xl leading-tight drop-shadow-lg mb-1">
+                      Dr. Sandeep Kumar Sahu
+                    </h2>
+                    <p className="text-teal-300 text-xs font-heading font-medium mb-3">
+                      DM Endocrinology · SCB Medical College, Cuttack
+                    </p>
+
+                    {/* Specialty tag pills */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {['Diabetes', 'Thyroid', 'Hormones', 'Metabolic'].map((tag) => (
+                        <span
+                          key={tag}
+                          className="bg-teal-400/20 backdrop-blur-sm border border-teal-300/30 text-teal-100 text-[10px] font-heading font-semibold px-2.5 py-0.5 rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Hover hint */}
+                    <p className="text-white/35 text-[10px] font-sans text-right mt-2 transition-opacity duration-300 group-hover:opacity-0 select-none">
+                      Hover to explore ↑
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
             </div>
           </motion.div>
         </div>

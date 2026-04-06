@@ -20,6 +20,7 @@ const About = () => {
         title="About Dr. Sandeep Kumar Sahu"
         subtitle="A decade of dedicated expertise in Endocrinology — bringing world-class hormonal care to Cuttack."
         breadcrumb={[{ label: 'About' }]}
+        bgImage="https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&q=80&w=2000"
       />
 
       {/* Main Profile Section */}

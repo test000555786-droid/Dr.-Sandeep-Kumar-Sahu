@@ -104,6 +104,7 @@ const PatientCorner = () => {
         title="Patient Corner"
         subtitle="Everything you need to prepare for your visit, understand your condition, and get the most from your care."
         breadcrumb={[{ label: 'Patient Corner' }]}
+        bgImage="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=2000"
       />
 
       {/* Quick Cards */}

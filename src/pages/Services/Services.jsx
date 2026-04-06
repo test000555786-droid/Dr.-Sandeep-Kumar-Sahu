@@ -76,6 +76,7 @@ const Services = () => {
         title="Our Services"
         subtitle="Comprehensive endocrine care covering the full spectrum of hormonal and metabolic disorders."
         breadcrumb={[{ label: 'Services' }]}
+        bgImage="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=2000"
       />
 
       {/* Service cards */}

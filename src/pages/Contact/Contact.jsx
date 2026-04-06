@@ -32,6 +32,7 @@ const Contact = () => {
         title="Contact & Appointment"
         subtitle="Reach us for appointments, directions, or any questions about your care."
         breadcrumb={[{ label: 'Contact' }]}
+        bgImage="https://images.unsplash.com/photo-1520333789090-1afc82db536a?auto=format&fit=crop&q=80&w=2000"
       />
 
       {/* Quick Contact Bar */}

@@ -101,6 +101,7 @@ const Blogs = () => {
         title="Health & Wellness Blog"
         subtitle="Expert insights on endocrine health, diabetes management, thyroid disorders, and more — written for patients in plain language."
         breadcrumb={[{ label: 'Blogs' }]}
+        bgImage="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=2000"
       />
 
       <section className="section-padding bg-white">
